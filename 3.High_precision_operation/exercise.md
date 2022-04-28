@@ -3,6 +3,7 @@
 几百位以上的运算，使用数组模拟位数
 
 ## p1601 A + B 高精度
+
 ```C++
 //
 // Created by 王 on 2022/4/27.
@@ -56,4 +57,49 @@ int main(){
 
 ```
 
+## A*B
 
+```C++
+/*
+ * A * B 高精度
+ */
+
+int main(){
+    //输入
+    string A,B;
+    cin >> A;
+    cin >> B;
+    string_to_num(A,num1);
+    string_to_num(B,num2);
+
+    //实现 A + B 中间值 过渡
+    int lena = A.length(),lenb = B.length();
+
+    for(int i = 1;i <= lena;i ++){
+        for(int j =  1; j <= lenb; j++){
+            result[i + j - 1] += num1[i] * num2[j];
+        }
+    }
+    int len = lena + lenb;
+
+
+    //处理进位
+    for(int i = 1; i <= len; i ++ ){
+        result[i+1] += result[i] / 10;
+        result[i] %= 10;
+    }
+
+    for(;!result[len];)  len --; //去除高位0
+
+        for (int i = max(1,len); i >= 1; --i) {
+        cout << result[i];
+    }
+
+}
+/*
+ * len小于1问题
+ * 数组长度问题
+ */
+
+
+```
