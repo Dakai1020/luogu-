@@ -188,3 +188,42 @@ int main(){
 
 
 ```
+
+## p 1591 1000位阶乘
+使用之前定义的结构体
+```C++
+
+/*
+ * p1591
+ */
+
+int main() {
+
+
+    int t;
+    cin >> t;
+    int n, a;
+    int cnt;
+
+    for (int i = 1; i <= t; i++) {
+        cnt = 0;
+        Bigint ans(1);
+        cin >> n >> a;
+
+        for (int j = 1; j <= n; j++) {
+            ans = ans * j;
+        }
+
+
+        for (int k = ans.len; k >= 1; k--) {
+            if (ans[k] == a)
+                cnt ++;
+        }
+
+        cout << cnt <<endl;
+
+    }
+
+}
+
+```
