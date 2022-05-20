@@ -65,3 +65,38 @@ bool cmp(Node aa,Node bb){//定义排序方法
 ```
 
 + 并不是动态规划的背包问题，日后在探索真正的背包问题...
+
+# 1223
+
+```c++
+struct water{
+    int num,time;
+} p[1010];
+
+bool cmp(water a, water b){
+    if(a.time != b.time) return  a.time < b.time;
+    return a.num < b.num;
+}
+
+int n;
+double sum;
+int main() {
+    cin >> n;
+    F(i, 1, n) {
+        cin >> p[i].time;
+        p[i].num = i;
+    }
+
+    sort(p+1,p+1+n,cmp);
+    F(i,1,n) {
+        cout << p[i].num <<' ';
+        sum += i * p[n-i].time;
+    }
+
+    printf("\n%.2f\n",sum / n);
+}
+
+
+
+
+```
