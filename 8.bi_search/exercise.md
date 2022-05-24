@@ -52,3 +52,29 @@ int main(){
 
 
 ```
+
+# 1102
+```C++
+
+/*
+ * 1102
+ */
+typedef long long LL;
+#define MAXN 200010
+LL a[MAXN];
+int n,c;
+int main(){
+    cin >> n >>c;
+    F(i,1,n) scanf("%lld",&a[i]);
+    sort(a+1,a+1+n);
+    LL tot = 0;
+    F(i,1,n)
+        tot += upper_bound(a + 1, a + 1 + n, a[i] + c) - lower_bound(a + 1, a + n + 1, a[i] + c);
+    /*
+     * upper_bound(begin,end,val) ,返回地址， bigin ~ end最后出现 val 的地址
+     * lower_bound(begin,end,val) ,返回地址， bigin ~ end首次出现 val 的地址
+     */
+    cout << tot;
+}
+
+```
