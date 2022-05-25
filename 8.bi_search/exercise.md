@@ -77,4 +77,39 @@ int main(){
     cout << tot;
 }
 
+
+```
+
+# 二分答案 1873
+``` c++
+/*
+ * 二分答案
+ * 1873
+ */
+
+#define maxn 1000010
+typedef long long LL;
+LL a[maxn],n,m;
+
+// 判别 高度
+bool P(int h){
+    LL tot = 0;
+    F(i,1,n) if(a[i] > h) tot += a[i] - h;
+    return tot >= m;
+}
+
+int main(){
+    cin >> n >>m;
+    F(i,1,n) scanf("%lld",&a[i]);
+    int l = 0,r = 1e9,ans,mid;
+    while (l <= r)
+        if(P(mid = (l + r) >> 1)) ans = mid,l = mid +1;
+        /*
+         * >>1 ：右移1位，相当于除以二
+         * << 1 : 左移1位，相当于乘以2
+         */
+        else r = mid - 1;
+    printf("%d",ans);
+}
+
 ```
