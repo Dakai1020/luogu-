@@ -1,4 +1,5 @@
 # 1219 八皇后
+
 ```c++
 //
 // Created by 王 on 2022/5/27.
@@ -52,7 +53,9 @@ int main(){
 }
 
 ```
+
 # 2392
+
 之前没有学深度搜索，在暴力枚举里面接触此题未通过
 
 ```c++
@@ -83,6 +86,47 @@ int main() {
         ans += (sum - maxtime); //加上答案
     }
     cout << ans;
+    return 0;
+}
+
+
+
+```
+
+# 1030 二叉树已知中、后序，求先序
+
+```c++
+//
+// Created by 王 on 2022/5/27.
+//
+#include "iostream"
+#include "cstdio"
+#include "cstring"
+#include "algorithm"
+
+#define F(i, a, b) for(int i = a;i <= b;i++)
+using namespace std;
+
+/*
+ * 1030
+ * dfs
+ * 二叉树已知中、后序，求先序
+ */
+
+void beford(string in, string after){
+    if(in.size() > 0){
+        char ch = after[after.size()-1];    //根节点的数值
+        cout << ch; //输出 根节点(先序序列)
+        int k = in.find(ch); //找到在中序序列中的根节点的index
+        beford(in.substr(0,k),after.substr(0,k));   //前半部分
+        beford(in.substr(k+1),after.substr(k,in.size()-k-1));   //后半部分
+    }
+}
+
+int main(){
+    string inord,aford;
+    cin >> inord >> aford;
+    beford(inord,aford);
     return 0;
 }
 
